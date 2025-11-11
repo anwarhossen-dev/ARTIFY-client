@@ -6,6 +6,8 @@ import ExploreArtworks from '../Pages/Explore/ExploreArtworks';
 import ArtworkDetails from '../Pages/ArtworkDetails/ArtworkDetails';
 import AddArtwork from '../Pages/AddArtwork/AddArtwork';
 import PrivateRoute from '../Layouts/PrivateRoute';
+import Login from '../Pages/Auth/Login';
+import Register from '../Pages/Auth/Register';
 
 
 
@@ -37,6 +39,8 @@ export const Router = createBrowserRouter(
           </PrivateRoute>
         ),
       },
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register/> },
       ]
      
      }

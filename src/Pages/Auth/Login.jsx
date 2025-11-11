@@ -1,7 +1,8 @@
 import { use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-import { AuthContext } from "../../context/AuthContext";
+
 import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../Providers/AuthContext";
 
 const Login = () => {
   const { signInUser, signInWithGoogle } = use(AuthContext);
@@ -79,7 +80,7 @@ const Login = () => {
         <p className="text-center">
           New to our website? Please  <Link
             className="text-blue-500 hover:text-blue-800"
-            to="/auth/register"
+            to="/Auth/Register"
           >
              Register
           </Link>
