@@ -1,196 +1,101 @@
-// import React, { use, useEffect } from 'react';
-// import { Link, NavLink } from 'react-router';
-// import { AuthContext } from '../Providers/AuthContext';
-// import { useState } from 'react';
-
-// const Navbar = () => {
-//      const { user, signOutUser} = use(AuthContext);
-//      const [Theme, setTheme] = useState(localStorage.getItem('theme') || "light")
-
-//      useEffect(() => {
-//     const html = document.querySelector('html')
-//      html.setAttribute("data-theme", Theme)
-//      localStorage.setItem("theme", Theme)
-//   }, [Theme])
-
-
-//     const handleTheme = (checked) => {
-//     setTheme(checked ? "dark": "light")
-//   }
-
-
-//        const handleSignOut = () => {
-//         signOutUser()
-//             .then()
-//             .catch()
-//     }
-//     const Links  = <>
-//         <li><NavLink to="/">Home</NavLink></li>
-//         <li><NavLink to="/explore">Explore</NavLink></li>
-//         {
-//             user && <>
-//                 <li><NavLink to="/addArtwork">AddArtwork</NavLink></li>
-//                 <li><NavLink to="/myGallery">My Gallery</NavLink></li>
-//                 <li><NavLink to="/myFavorites">MyFavorites</NavLink></li>
-//                 <li><NavLink to="/artworkDetails">ArtworkDetails</NavLink></li>
-//             </>
-//         }
-
-//     </>
-
-
-
-//     return (
-//         <div className="navbar bg-base-100 shadow-sm">
-//   <div className="navbar-start">
-//     <div className="dropdown">
-//       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-//         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-//       </div>
-//       <ul
-//         tabIndex="-1"
-//         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-//        {Links}
-//       </ul>
-//     </div>
-//     <Link className="btn btn-ghost text-xl">ARTIFY</Link>
-//   </div>
-//   <div className="navbar-center hidden lg:flex">
-//     <ul className="menu menu-horizontal px-1">
-//       {Links}
-//     </ul>
-//   </div>
-//    <div className="navbar-end">
-//                 {
-//                     user ?
-//                         <a onClick={handleSignOut} className="btn btn-primary">Sign Out</a> :
-//                         <Link to="/register">Login</Link>
-//                 }
-//             </div>
-// </div>
-//     );
-// };
-
-// export default Navbar;
-import React, { useEffect, useState, useContext } from "react";
-import { Link, NavLink } from "react-router";
-import { AuthContext } from "../Providers/AuthContext";
-import ThemeToggle from "./ThemeToggle";
+import React, { use, useEffect, useState } from 'react';
+import MyLink from './MyLink';
+import { Link } from 'react-router';
+import { AuthContext } from '../Providers/AuthContext';
+//import { AuthContext } from '../Provider/AuthContext';
 
 const Navbar = () => {
-  const { user, signOutUser } = useContext(AuthContext);
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+    const {user,logOut} = use(AuthContext)
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
 
-  const handleSignOut = () => {
-    signOutUser()
-      .then(() => console.log("Signed out"))
-      .catch((err) => console.log(err));
-  };
+    useEffect(()=>{
+        const html = document.querySelector('html')
+        html.setAttribute('data-theme',theme)
+        localStorage.setItem("theme",theme)
+    },[theme])
 
-  const Links = (
-    <>
-      <li>
-        <NavLink to="/" className={({ isActive }) => (isActive ? "font-bold text-pink-500" : "")}>
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/explore" className={({ isActive }) => (isActive ? "font-bold text-pink-500" : "")}>
-          Explore
-        </NavLink>
-      </li>
-      {user && (
-        <>
-          <li>
-            <NavLink to="/addArtwork" className={({ isActive }) => (isActive ? "font-bold text-pink-500" : "")}>
-              Add Artwork
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/myGallery" className={({ isActive }) => (isActive ? "font-bold text-pink-500" : "")}>
-              My Gallery
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/myFavorites" className={({ isActive }) => (isActive ? "font-bold text-pink-500" : "")}>
-              My Favorites
-            </NavLink>
-          </li>
-        </>
-      )}
-    </>
-  );
+    const handleTheme =(checked)=>{
+        setTheme(checked ? "dark":"light")
+    }
 
-  return (
-    <nav className="navbar bg-base-100 shadow-md px-4 py-2 max-w-7xl mx-auto">
-      {/* Navbar Start */}
-      <div className="navbar-start flex items-center gap-3">
-        <div className="dropdown lg:hidden">
-          <label tabIndex={0} className="btn btn-ghost">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 gap-2"
-          >
-            {Links}
-            {user && (
-              <li>
-                <button
-                  onClick={handleSignOut}
-                  className="btn w-full text-white bg-gradient-to-r from-pink-500 to-red-600 hover:scale-105 transition-transform rounded-full"
-                >
-                  Sign Out
-                </button>
-              </li>
-            )}
-          </ul>
-        </div>
-
-        <Link to="/" className="text-xl font-bold btn btn-ghost">
-          ARTIFY
-        </Link>
+    const handleLogOut = () =>{
+        logOut()
+        .then()
+        .catch()
+    }
+    return (
+       <div className='bg-gray-200 text-black'>
+        <div className="w-11/12 mx-auto flex justify-between items-center py-2">
+  <div className="flex items-center">
+    <div className="dropdown">
+      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden pt-1">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
       </div>
+      <ul
+        tabIndex="-1"
+        className="menu menu-sm dropdown-content bg-[#B6AE9F] text-[#062941] font-bold rounded-box z-1 mt-3 w-52 p-2 ">
+    <li><MyLink to="/">Home</MyLink></li>           
+   {/* {
+    user && (
+        <div> */}
+             <li><MyLink to="/explore-artworks">Explore Artworks</MyLink></li>
+    <li><MyLink to="/add-artwork">Add Artwork</MyLink></li>
+    <li><MyLink to="/my-gallery">My
+     Gallery</MyLink></li>
+   <li><MyLink to="/my-favorites">My Favorites</MyLink></li>
+        {/* </div>
+    )
+   } */}
+      </ul>
+    </div>
+   <div className='font-extrabold text-3xl ' ><span className='text-[#9B5DE0] hover:underline'>A</span><span className='text-pink-600 hover:underline'>r</span><span className='text-green-600 hover:underline'>t</span><span className='text-yellow-500 hover:underline'>i</span><span className='text-blue-500 hover:underline'>f</span><span className='text-cyan-500 hover:underline'>y</span></div>
+  </div>
+  <div className='flex items-center gap-5'>
+    <div className=" hidden lg:flex">
+    <ul className="flex gap-4 px-1 text-sm">
+         <li><MyLink to="/">Home</MyLink></li>           
+   {/* {
+    user && (
+        <div className='flex items-center gap-3'> */}
+             <li><MyLink to="/explore-artworks">Explore Artworks</MyLink></li>
+    <li><MyLink to="/add-artwork">Add Artwork</MyLink></li>
+    <li><MyLink to="/my-gallery">My
+     Gallery</MyLink></li>
+   <li><MyLink to="/my-favorites">My Favorites</MyLink></li>
+        {/* </div>
+    )
+   } */}
+    </ul>
+  </div>
+  <div className="space-x-3 flex items-center">
+   {
+    user?.photoURL ? (
+    
+    <div className="dropdown dropdown-hover dropdown-end">
+  <div tabIndex={0} role="" className="">
+    <img className='w-10 h-10 rounded-full' src={user.photoURL} alt={user?.displayName} />
+    </div>
 
-      {/* Navbar Center */}
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 gap-4">{Links}</ul>
-      </div>
-
-      {/* Navbar End */}
-      <div className="navbar-end flex items-center gap-3">
-        <ThemeToggle />
-        {user ? (
-          <button
-            onClick={handleSignOut}
-            className="btn text-white bg-gradient-to-r from-pink-500 to-red-600 hover:scale-105 transition-transform rounded-full"
-          >
-            Sign Out
-          </button>
-        ) : (
-          <Link
-            to="/login"
-            className="btn text-white bg-gradient-to-r from-pink-500 to-red-600 hover:scale-105 transition-transform rounded-full"
-          >
-            Login
-          </Link>
-        )}
-      </div>
-    </nav>
-  );
+  <ul tabIndex={-1} className="dropdown-content   bg-[#a09d97] text-[#062941] rounded-box z-50 w-40 p-2 space-y-2 shadow">
+    <li className='space-x-2'><input onChange={(e)=> handleTheme(e.target.checked)} type="checkbox" defaultValue={localStorage.getItem('theme')==="dark"} className='toggle' /><span className='text-xs'>Theme Toggle</span></li>
+    <li><h3 className='hover:bg-[#B6AE9F] p-2 rounded-xl text-sm flex items-center gap-3'><img className='w-7 h-7 rounded-full' src={user.photoURL} alt="" />{user.displayName}</h3></li>
+    
+    <li><button onClick={handleLogOut} className='btn btn-sm btn-secondary w-full rounded-xl font-bold '>Log Out</button></li>
+  </ul>
+</div>
+) 
+:  
+  (<div className='space-x-3'>
+     <Link to="/auth/login" className='btn btn-secondary rounded-xl font-bold '>Log In</Link>
+    <Link to="/auth/register" className='btn btn-secondary rounded-xl font-bold '>Register</Link>
+  </div>)
+   }
+  </div>
+  </div>
+</div>
+       </div>
+    );
 };
 
 export default Navbar;

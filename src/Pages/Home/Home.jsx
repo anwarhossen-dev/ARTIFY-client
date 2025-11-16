@@ -1,13 +1,90 @@
-import React from 'react';
-import Banner from './Banner';
+
+// export default Home;
+import React, { use, useEffect, useState } from 'react';
+import { AuthContext } from '../../Providers/AuthContext';
+import Banner from '../../Components/Banner';
+import Highlights from '../../Components/Highlights';
+import ArtistCard from '../../Components/ArtistCard';
+import ArtWorkCard from '../../Components/ArtworkCard';
+import { useLoaderData } from 'react-router';
+import { Typewriter } from 'react-simple-typewriter';
+import { Fade } from 'react-awesome-reveal';
+import { FaUserAlt } from 'react-icons/fa';
+import axios from 'axios';
+
 
 const Home = () => {
+  const { loading } = use(AuthContext);
+  const latest = useLoaderData();
+  const [artists, setArtists] = useState([]);
+
+  // useEffect(() => {
+  //   axios('/artist.json')
+  //     .then((res) => res.json())
+  //     .then((data) => setArtists(data))
+  //     .catch((err) => console.error("Failed to load artists:", err));
+  // }, []);
+
+  useEffect(() => {
+    axios.get('/artist.json') // GET ব্যবহার করুন
+      .then((res) => {
+        setArtists(res.data);  // JSON data এখানে
+      })
+      .catch((err) => console.error("Failed to load artists:", err));
+  }, []);
+
+
+  if (loading) {
     return (
-        <div className='max-w-7xl mx-auto'>
-            <Banner/>
-            <h1>the in home page</h1>
-        </div>
+      <div className='flex justify-center items-center mt-50'>
+        <span className='loading loading-bars loading-xl'></span>
+      </div>
     );
+  }
+
+  return (
+    <div>
+      {/* Banner */}
+      <Banner />
+
+      {/* Latest Artworks */}
+      <div className='w-11/12 mx-auto py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+        {
+          (latest.map((artwork) => <ArtWorkCard key={artwork._id} promise={artwork} />
+          ))
+        }
+      </div>
+
+      {/* Top Artists */}
+      <div className='w-11/12 mx-auto py-10 my-15 bg-[#f3f4fc] rounded-lg dark:text-black'>
+        <Fade direction='left' triggerOnce>
+          <h1 className='text-2xl md:text-4xl font-bold text-center mx-auto pb-10 md:py-15 flex justify-center gap-2'>
+            <FaUserAlt className='text-[#d319a4] text-center ml-5 mt-1 md:mt-0' />{' '}
+            <span className='text-[#059ca1]'>
+              <Typewriter
+                words={['Top Artists of the Week']}
+                loop={true}
+                cursor
+                cursorStyle='|'
+                typeSpeed={100}
+                deleteSpeed={70}
+                delaySpeed={1500}
+              />
+            </span>
+          </h1>
+        </Fade>
+
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-5 pb-10 md:px-10'>
+          {artists.map((art) => (
+            <ArtistCard key={art.id} art={art} />
+          ))}
+        </div>
+      </div>
+
+      {/* Community Highlights */}
+      <Highlights />
+    </div>
+  );
 };
 
 export default Home;

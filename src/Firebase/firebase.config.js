@@ -10,7 +10,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyBTkc99FFGEJAhzULGx3hc8MJJQ5LP315E",
   authDomain: "artify-6bb1b.firebaseapp.com",
   projectId: "artify-6bb1b",
-  storageBucket: "artify-6bb1b.firebasestorage.app",
+  storageBucket: "artify-6bb1b.appspot.com",
   messagingSenderId: "194000581797",
   appId: "1:194000581797:web:c2d57beccc13acdb97c94c"
 };

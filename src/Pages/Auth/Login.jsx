@@ -1,93 +1,86 @@
-import { use } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
-
-import { FaGoogle } from "react-icons/fa";
-import { AuthContext } from "../../Providers/AuthContext";
+import React, { use, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router';
+//import { AuthContext } from '../Provider/AuthContext';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../Providers/AuthContext';
 
 const Login = () => {
-  const { signInUser, signInWithGoogle } = use(AuthContext);
+  const {signInGoogle,setUser,signInUser} = use(AuthContext)
+  const [error,setError] = useState()
+  const navigate = useNavigate()
+  const location = useLocation()
 
-  const location = useLocation();
-  const navigate = useNavigate();
-  console.log(location);
+  const handleLogIn =(e)=>{
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const validation = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/ ;
+        if(!validation.test(password)){
+            setError("Password must have at least one uppercase, one lowercase, and be 6+ characters long.")
+            return;
+        }
+        
+    signInUser(email,password)
+    .then(result => {
+      setUser(result.user)
+      e.target.reset()
+      navigate( location.state ? location.state : "/")
+    })
+    .catch(error =>{
+      toast.error(error.message);
+      setError(error.message)
+    })
+  }
+  const handleGoogleSign =()=>{
 
-  const handleLogIn = (event) => {
-    event.preventDefault();
-    const email = event.target.email.value;
-    const password = event.target.password.value;
+    signInGoogle()
+    .then(result =>{
+      setUser(result.user)
+      navigate( location.state?.pathname || "/")
+    })
+    .catch(error =>{
+      toast.error(error.message);
+    })
+  }
 
-    console.log(email, password);
-    signInUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        event.target.reset();
-        navigate(location.state || "/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
-  const handleGoogleSignIn = () => {
-    signInWithGoogle()
-      .then((result) => {
-        console.log(result.user);
-        navigate(location?.state || "/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  return (
-    <div className="card bg-base-100  w-full mx-auto max-w-sm shrink-0 shadow-2xl border border-gray-200">
+    return (
+       
+    <div className="w-11/12 md:w-4/12 mx-auto my-20 card bg-base-300 ">
       <div className="card-body">
-        <h1 className="text-3xl font-bold text-center">Login</h1>
-        <form onSubmit={handleLogIn}>
-          <fieldset className="fieldset">
-   
-            <label className="label">Email</label>
-            <input
-              type="email"
-              name="email"
-              className="input rounded-full focus:border-0 focus:outline-gray-200"
-              placeholder="Email"
-            />
+        <h1 className="text-5xl text-center font-bold">Login now!</h1>
+        <form onSubmit={handleLogIn} action="">
+            <fieldset className="fieldset">
+          <label className="label font-bold text-sm">Email</label>
+          <input 
+          type="email"
+          name='email' 
+          required
+          className="input w-full" placeholder="Email" />
+          <label className="label font-bold text-sm">Password</label>
+          <input 
+          type="password"
+          name="password" 
+          required
+          className="input w-full" placeholder="Password" />
+          <div><a className="link link-hover font-bold text-sm label">Forgot password?</a></div>
 
-            <label className="label">Password</label>
-            <input
-              type="password"
-              name="password"
-               className="input rounded-full focus:border-0 focus:outline-gray-200"
-              placeholder="Password"
-            />
-            <div>
-              <a className="link link-hover">Forgot password?</a>
-            </div>
-            <button className="btn text-white mt-4 rounded-full bg-linear-to-r from-pink-500 to-red-600">
-              Login
-            </button>
-          </fieldset>
+          {
+            error && <p className='text-pink-500 font-bold text-xs'>{error}</p>
+          }
+
+          <button type='submit' className="btn btn-secondary mt-4 text-lg shadow">Log In</button>
+        </fieldset>
         </form>
-
-        <button
-          onClick={handleGoogleSignIn}
-          className="btn bg-white rounded-full text-black border-[#e5e5e5]"
-        >
-          <FaGoogle />
-          Login with Google
-        </button>
-        <p className="text-center">
-          New to our website? Please  <Link
-            className="text-blue-500 hover:text-blue-800"
-            to="/Auth/Register"
-          >
-             Register
-          </Link>
-        </p>
+        <p className='font-bold text-lg py-3'>Create An Account? Please <Link to="/auth/register" className='text-blue-500 underline'>Register</Link>.</p>
+        {/* Google */}
+<Link to="/" onClick={handleGoogleSign} className="btn bg-white text-black border-[#e5e5e5] font-bold text-md">
+  <svg aria-label="Google logo" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="m0 0H512V512H0" fill="#fff"></path><path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path><path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path><path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path><path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path></g></svg>
+  Login with Google
+</Link>
       </div>
     </div>
-  );
+    );
 };
 
 export default Login;

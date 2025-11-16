@@ -1,0 +1,38 @@
+{
+  "communityHighlights": {
+    "artworkTipsAndTricks": {
+      "digitalArt": {
+        "title": "Digital Art Tips",
+        "tips": [
+          "Use layers effectively — separate your line art, coloring, and lighting for better control and easy editing.",
+          "Experiment with custom brushes to add unique textures and personal style to your work.",
+          "Zoom out often to check overall composition and balance — details can distract from the big picture."
+        ]
+      },
+      "painting": {
+        "title": "Painting Tips",
+        "tips": [
+          "Start with a rough sketch or underpainting to plan values and shapes before adding color.",
+          "Use larger brushes in early stages to block in main forms and switch to smaller ones for details.",
+          "Balance warm and cool tones to create depth and mood in your artwork."
+        ]
+      },
+      "colorTheory": {
+        "title": "Color Theory Tips",
+        "tips": [
+          "Use complementary colors to make your artwork pop — they create strong visual contrast.",
+          "Limit your color palette to maintain harmony and focus within a composition.",
+          "Understand color temperature — warm colors advance while cool colors recede."
+        ]
+      },
+      "artPresentation": {
+        "title": "Art Sharing Tips",
+        "tips": [
+          "Use consistent lighting when photographing or scanning your artwork to ensure accurate colors.",
+          "Write short but engaging captions to give viewers insight into your creative process.",
+          "Keep your online portfolio organized by style to make browsing enjoyable for visitors."
+        ]
+      }
+    }
+  }
+}

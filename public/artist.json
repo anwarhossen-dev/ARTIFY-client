@@ -1,0 +1,23 @@
+[
+  {
+    "artistName": "Cecily Brown",
+    "mediums": "Painting",
+    "id": "CB-001",
+    "description": "A leading contemporary painter known for her large-scale, dynamic, and sensuous abstract-figurative compositions.",
+    "imageUrl": "https://i.ibb.co.com/Tq7FrXCh/download-5.jpg"
+  },
+  {
+    "artistName": "Julie Mehretu",
+    "mediums":"Drawing",
+    "id": "003",
+    "description": "Critically acclaimed for her complex figurative compositions that blend painting, drawing, photo-collage, and printmaking.",
+    "imageUrl": "https://i.ibb.co.com/SXmqzKx6/images-4.jpg"
+  },
+  {
+    "artistName": "Julie peter",
+    "mediums":"Painting",
+    "id": "PD-004",
+    "description": " His lush, evocative, and sometimes unsettling landscape and figure paintings are instantly recognizable and are among the most expensive works by any living artist.",
+    "imageUrl": "https://i.ibb.co.com/FLC2GH00/Untitled.jpg"
+  }
+]
