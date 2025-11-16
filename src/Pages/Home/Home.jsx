@@ -11,6 +11,7 @@ import { Typewriter } from 'react-simple-typewriter';
 import { Fade } from 'react-awesome-reveal';
 import { FaUserAlt } from 'react-icons/fa';
 import axios from 'axios';
+import LoadingSpinner from '../../Components/LoadingSpinner';
 
 
 const Home = () => {
@@ -26,9 +27,9 @@ const Home = () => {
   // }, []);
 
   useEffect(() => {
-    axios.get('/artist.json') // GET ব্যবহার করুন
+    axios.get('/artist.json') // GET 
       .then((res) => {
-        setArtists(res.data);  // JSON data এখানে
+        setArtists(res.data);  // JSON data set
       })
       .catch((err) => console.error("Failed to load artists:", err));
   }, []);
@@ -37,7 +38,8 @@ const Home = () => {
   if (loading) {
     return (
       <div className='flex justify-center items-center mt-50'>
-        <span className='loading loading-bars loading-xl'></span>
+        {/* <span className='loading loading-bars loading-xl'></span> */}
+        <LoadingSpinner />
       </div>
     );
   }

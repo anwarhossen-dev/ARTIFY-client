@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           {/* About */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white">Artify</h3>
+            <div className='font-extrabold text-3xl ' ><span className='text-[#9B5DE0] hover:underline'>A</span><span className='text-pink-600 hover:underline'>r</span><span className='text-green-600 hover:underline'>t</span><span className='text-yellow-500 hover:underline'>i</span><span className='text-blue-500 hover:underline'>f</span><span className='text-cyan-500 hover:underline'>y</span></div>
             <p className="text-gray-400 text-sm">
               Discover, showcase, and collect artworks from talented artists
               around the world. Join the Artify community today!

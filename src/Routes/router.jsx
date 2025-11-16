@@ -4,7 +4,6 @@ import { createBrowserRouter } from "react-router";
 // import AddArtwork from "../Pages/AddArtwork/AddArtwork";
 import MainLayout from "../Layouts/MainLayout";
 import NotFound from "../Pages/NotFound/NotFound";
-//import Home from "../Pages/Home/Home";
 import ExploreArtworks from "../Pages/Explore/ExploreArtworks";
 import PrivateRoute from "../Providers/PrivateRoute";
 import ArtworkDetails from "../Pages/ArtworkDetails/ArtworkDetails";
@@ -39,7 +38,7 @@ const router = createBrowserRouter(
                     element: <Home />,
                     loader: async () => {
                         const res = await axios.get('http://localhost:3000/latest-addArtwork');
-                        return res.data;   // array return হচ্ছে
+                        return res.data;   
                     }
                 },
                 {

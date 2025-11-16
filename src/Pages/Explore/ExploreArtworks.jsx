@@ -2,38 +2,68 @@ import React, {  use, useEffect, useState } from 'react';
 import ArtWorkCard from '../../Components/ArtworkCard';
 import { AuthContext } from '../../Providers/AuthContext';
 import axios from 'axios';
+import LoadingSpinner from '../../Components/LoadingSpinner';
 
 const ExploreArtworks = () => {
   const [artworks, setArtworks] = useState([]);
   const {loading} = use(AuthContext)
 
-  useEffect(() => {
-    axios('http://localhost:3000/addArtwork')
-      .then(res => res.json())
-      .then(data => {
-        const publicArtworks = data.filter(art => art.visibility === "Public");
+//   useEffect(() => {
+//     axios('http://localhost:3000/addArtwork')
+//       .then(res => res.json())
+//       .then(data => {
+//         const publicArtworks = data.filter(art => art.visibility === "Public");
+//         setArtworks(publicArtworks);
+//       })
+//   }, []);
+//  if(loading){
+//   return (
+//             <div className='flex justify-center items-center mt-50'>
+//                 <span className='loading loading-bars loading-xl'></span>
+//             </div>
+//         )
+// }
+//   const handleSearch =(e)=>{
+//     e.preventDefault()
+//     const search = e.target.search.value
+//    axios(`http://localhost:3000/search?search=${search}`)
+//     .then(res => res.json())
+//     .then(data =>{
+//       setArtworks(data)
+      
+//     })
+    
+//   }
+
+
+useEffect(() => {
+    axios.get('http://localhost:3000/addArtwork')
+      .then(res => {
+        const publicArtworks = res.data.filter(art => art.visibility === "Public");
         setArtworks(publicArtworks);
       })
+      .catch(err => console.log(err));
   }, []);
- if(loading){
-  return (
-            <div className='flex justify-center items-center mt-50'>
-                <span className='loading loading-bars loading-xl'></span>
-            </div>
-        )
-}
-  const handleSearch =(e)=>{
-    e.preventDefault()
-    const search = e.target.search.value
-   axios(`http://localhost:3000/search?search=${search}`)
-    .then(res => res.json())
-    .then(data =>{
-      setArtworks(data)
-      
-    })
-    
+
+  if (loading) {
+    return (
+      <div className='flex justify-center items-center mt-50'>
+        {/* <span className='loading loading-bars loading-xl'></span> */}
+        <LoadingSpinner/>
+      </div>
+    );
   }
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const search = e.target.search.value;
+
+    axios.get(`http://localhost:3000/search?search=${search}`)
+      .then(res => {
+        setArtworks(res.data);
+      })
+      .catch(err => console.log(err));
+  };
   return (
     <div className="w-10/12 mx-auto py-10">
       {/*  Search Bar */}
