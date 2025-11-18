@@ -1,6 +1,7 @@
 import React, { use } from 'react';
 import { AuthContext } from './AuthContext';
 import { Navigate, useLocation } from 'react-router';
+import LoadingSpinner from '../Components/LoadingSpinner';
 
 const PrivateRoute = ({ children }) => {
     const {user,loading} = use(AuthContext)
@@ -9,7 +10,7 @@ const PrivateRoute = ({ children }) => {
     if(loading){
         return (
             <div className='flex justify-center items-center mt-50'>
-                <span className='loading loading-bars loading-xl'></span>
+                <LoadingSpinner/>
             </div>
         )
     }
