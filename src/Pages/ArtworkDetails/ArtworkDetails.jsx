@@ -326,6 +326,7 @@ const ArtworkDetails = () => {
     axios
       .get(`http://localhost:3000/addArtwork/${id}`)
       .then(res => {
+        //console.log(res.data);
         setArtwork(res.data);
         setLoading(false);
       })
