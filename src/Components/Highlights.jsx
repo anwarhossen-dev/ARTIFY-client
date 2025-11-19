@@ -3,6 +3,7 @@ import React, { use } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { FaComment, FaUserAlt } from 'react-icons/fa';
 import { Typewriter } from 'react-simple-typewriter';
+import Marquee from "react-fast-marquee";
 
 
 
@@ -101,10 +102,8 @@ const Highlights = () => {
             </Fade>
 
 
-
-
-
-            <div className='grid grid-cols-1 md:grid-cols-4 gap-5 px-5 pb-20'>
+            <Marquee>
+                <div className='grid grid-cols-1 md:grid-cols-4 gap-5 px-5 pb-20'>
                 <div className=' gap-5 text-sm'>
                     <div className='mt-8 bg-white p-6 rounded-xl space-y-3'>
                         <h2 className='font-bold text-xl  dark:text-black flex items-center gap-2'>{tips.communityHighlights.artworkTipsAndTricks
@@ -162,6 +161,7 @@ const Highlights = () => {
 
                 </div>
             </div>
+            </Marquee>
 
         </div>
     );

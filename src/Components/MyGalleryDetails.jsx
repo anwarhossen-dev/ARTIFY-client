@@ -16,6 +16,7 @@ const MyGalleryDetails = () => {
 
     axios.get(`http://localhost:3000/addArtwork/${id}`)
       .then(res => {
+        
         setGallery(res.data);
       })
       .catch(err => {

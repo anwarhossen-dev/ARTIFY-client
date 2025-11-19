@@ -134,7 +134,7 @@ import { Link } from 'react-router';
 
 const UpdateGallery = ({promise}) => {
         return (
-            <div className="card bg-[#fcf9f8] dark:text-gray-900 shadow-sm transition duration-150 ease-in-out hover:-translate-y-1 hover:scale-100">
+            <div className=" bg-[#fcf9f8] dark:text-gray-900 shadow-sm transition duration-150 ease-in-out hover:-translate-y-1 hover:scale-100 mt-10 mb-10">
       <figure className="">
         <img
           src={promise.ImageURL}

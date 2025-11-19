@@ -4,6 +4,9 @@ import FavoriteDetails from '../../Components/FavoriteDetails';
 import axios from 'axios';
 import LoadingSpinner from '../../Components/LoadingSpinner';
 import Swal from 'sweetalert2';
+import { Typewriter } from 'react-simple-typewriter';
+import { Fade } from 'react-awesome-reveal';
+import { FaUserAlt } from 'react-icons/fa';
 
 const MyFavorites = () => {
     const { user } = use(AuthContext)
@@ -54,25 +57,25 @@ const MyFavorites = () => {
     // };
 
     const handleRemoveFromGallery = async (id) => {
-    try {
-        await axios.delete(`http://localhost:3000/favoriteArt/${id}`);
+        try {
+            await axios.delete(`http://localhost:3000/favoriteArt/${id}`);
 
-        // UI থেকে remove করা
-        setGallery(prev => prev.filter(item => item._id !== id));
+            // UI থেকে remove করা
+            setGallery(prev => prev.filter(item => item._id !== id));
 
-        Swal.fire({
-            icon: "success",
-            title: "Removed from Favorites",
-            timer: 800,
-            showConfirmButton: false,
-            position: "top"
-        });
+            Swal.fire({
+                icon: "success",
+                title: "Removed from Favorites",
+                timer: 800,
+                showConfirmButton: false,
+                position: "top"
+            });
 
-    } catch (error) {
-        console.error(error);
-        Swal.fire("Failed to remove!");
-    }
-};
+        } catch (error) {
+            console.error(error);
+            Swal.fire("Failed to remove!");
+        }
+    };
 
     if (loading) {
         return (
@@ -87,21 +90,44 @@ const MyFavorites = () => {
 
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {
-                gallery.map(promise => <FavoriteDetails key={promise._id} promise={promise}
-                    onDeleted={handleRemoveFromGallery}
+        <>
+            <div className='text-center text-bold'>
+                <Fade direction="left" triggerOnce>
+                    <h1 className="text-2xl md:text-4xl font-bold text-center mx-auto pb-10 flex justify-center gap-2 mt-10">
+                        <FaUserAlt className="text-[#d319a4] mt-1" />
+                        <span className="text-[#059ca1]">
+                            <Typewriter
+                                words={['My Favorite Card Details:']}
+                                loop={true}
+                                cursor
+                                cursorStyle="|"
+                                typeSpeed={100}
+                                deleteSpeed={70}
+                                delaySpeed={1500}
+                            />
+                        </span>
+                    </h1>
+                </Fade>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {
+                    gallery.map(promise => <FavoriteDetails key={promise._id} promise={promise}
+                        onDeleted={handleRemoveFromGallery}
 
-                ></FavoriteDetails>)
-            }
-        </div>
-    //     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    //     {
-    //       gallery.map((promise) =>
-    //         <FavoriteDetails key={promise._id} promise={promise} />)}
+                    ></FavoriteDetails>)
+                }
+            </div>
+        </>
 
 
-    //   </div>
+
+        //     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        //     {
+        //       gallery.map((promise) =>
+        //         <FavoriteDetails key={promise._id} promise={promise} />)}
+
+
+        //   </div>
     );
 };
 

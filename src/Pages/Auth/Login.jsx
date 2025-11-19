@@ -25,6 +25,7 @@ const Login = () => {
       setUser(result.user)
       e.target.reset()
       navigate( location.state ? location.state : "/")
+      toast.success(`${Login.User?.displayName} logged in successfully`);
     })
     .catch(error =>{
       toast.error(error.message);
@@ -37,6 +38,7 @@ const Login = () => {
     .then(result =>{
       setUser(result.user)
       navigate( location.state?.pathname || "/")
+     toast.success(`${Login.User?.displayName} logged in successfully`);
     })
     .catch(error =>{
       toast.error(error.message);

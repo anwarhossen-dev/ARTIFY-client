@@ -247,7 +247,26 @@ const Home = () => {
       <Banner />
 
       {/* Latest Artworks Section */}
+      <div className='text-center text-bold'>
+        <Fade direction="left" triggerOnce>
+          <h1 className="text-2xl md:text-4xl font-bold text-center mx-auto pb-10 flex justify-center gap-2">
+            <FaUserAlt className="text-[#d319a4] mt-1" />
+            <span className="text-[#059ca1]">
+              <Typewriter
+                words={['Featured Artworks Section:']}
+                loop={true}
+                cursor
+                cursorStyle="|"
+                typeSpeed={100}
+                deleteSpeed={70}
+                delaySpeed={1500}
+              />
+            </span>
+          </h1>
+        </Fade>
+        </div>
       <div className="w-11/12 mx-auto py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
         {latest?.map((art) => (
           <ArtWorkCard key={art._id} promise={art} />
         ))}
@@ -277,6 +296,7 @@ const Home = () => {
             <ArtistCard key={art.id} art={art} />
           ))}
         </div> */}
+        
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-10 md:px-10">
           {artists?.map((art) => (

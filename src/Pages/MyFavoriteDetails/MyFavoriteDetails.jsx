@@ -54,7 +54,7 @@ const MyFavoriteDetails = () => {
                 {/* LEFT SIDE : ART IMAGE */}
                 <div className="flex-1">
                     <img
-                        className="w-[50px] h-80 object-cover rounded-xl"
+                        className="w-full h-80 object-cover rounded-xl"
                         src={count.ImageURL || "/placeholder.jpg"}
                         onError={(e) => (e.target.src = "/placeholder.jpg")}
                         alt="Artwork"

@@ -26,7 +26,9 @@ const AuthProvider = ({children}) => {
         return updateProfile(auth.currentUser,userProfile)
     }
     const logOut= () => {
+        
         return signOut(auth)
+        
     }
     
     useEffect(()=>{
