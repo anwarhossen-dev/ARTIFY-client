@@ -1,13 +1,15 @@
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import { AuthContext } from '../../Providers/AuthContext';
 import axios from 'axios';
+import LoadingSpinner from '../../Components/LoadingSpinner';
 
 const AddArtwork = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const { Loading, setloading } = useState(true);
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -37,11 +39,18 @@ const AddArtwork = () => {
       toast.success('Successfully added artwork!');
       navigate('/');
       e.target.reset();
+      setloading(false);
     } catch (error) {
       console.error(error);
       toast.error('Failed to add artwork. Check console.');
     }
   };
+  if(Loading){
+    return (<div>
+      <LoadingSpinner />
+    </div>
+    );
+  }
   
 
 
@@ -219,18 +228,18 @@ const AddArtwork = () => {
 
 
             <div className='w-full mx-auto space-y-3'>
-              <label className="label">Title</label>
-              <input type="text" name="title" className="input block w-full" placeholder="Title" />
+              <label className="label" >Title</label>
+              <input type="text" name="title" className="input block w-full" placeholder="Title" required />
             </div>
             <div className='w-full mx-auto space-y-3'>
               <label className="label">Artist Name</label>
-              <input type="text" name="artistname" className="input block w-full" placeholder="Artist Name" />
+              <input type="text" name="artistname" className="input block w-full" placeholder="Artist Name" required />
             </div>
           </div>
           <div className='flex flex-col md:flex-row gap-3 justify-between'>
             <div className='w-full mx-auto space-y-3'>
-              <label className="label">Name</label>
-              <input type="text" readOnly defaultValue={user.displayName} name="name" className="input block w-full" placeholder="Name" />
+              <label className="label" aria-required>Name</label>
+              <input type="text" readOnly defaultValue={user.displayName} name="name" className="input block w-full" placeholder="Name" required />
             </div>
             <div className='w-full space-y-3'>
               <label className="label">Email</label>
@@ -240,7 +249,7 @@ const AddArtwork = () => {
           <div className='flex flex-col md:flex-row gap-3 justify-between'>
             <div className='w-full space-y-3'>
               <label className="label">Image</label>
-              <input type="text" name="ImageURL" className="input block w-full" placeholder="Image URL" />
+              <input type="text" name="ImageURL" className="input block w-full" placeholder="Image URL" required />
             </div>
 
             <div className=' space-y-3'>
