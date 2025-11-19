@@ -8,7 +8,7 @@ const FavoriteDetails = ({ promise}) => {
   const handleFavoriteButton =async() => {
     
 
-    const unf = await axios(`http://localhost:3000/favoriteArt/${promise._id}`, {
+    const unf = await axios(`https://artify-server-six.vercel.app/favoriteArt/${promise._id}`, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json'

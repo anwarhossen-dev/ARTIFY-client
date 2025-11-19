@@ -50,7 +50,7 @@ const MyGalleryDetails = () => {
 
         const gallDete = async () => {
           try {
-            const res = await axios.delete(`http://localhost:3000/addArtwork/${gallery._id}`);
+            const res = await axios.delete(`https://artify-server-six.vercel.app/addArtwork/${gallery._id}`);
             ;
 
             // Axios automatically parses JSON → res.data
