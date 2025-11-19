@@ -324,7 +324,7 @@ const ArtworkDetails = () => {
   // =============================
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/addArtwork/${id}`)
+      .get(`https://artify-server-six.vercel.app/addArtwork/${id}`)
       .then(res => {
         //console.log(res.data);
         setArtwork(res.data);

@@ -37,7 +37,7 @@ const router = createBrowserRouter(
                     index: '/',
                     element: <Home />,
                     loader: async () => {
-                        const res = await axios.get('http://localhost:3000/latest-addArtwork');
+                        const res = await axios.get('https://artify-server-six.vercel.app/latest-addArtwork');
                         return res.data;   
                     }
                 },
