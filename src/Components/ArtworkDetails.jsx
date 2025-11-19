@@ -176,7 +176,7 @@ const ArtworkDetails = () => {
   const handleLikeButton = async () => {
     try {
       const res = await axios.post(
-        `http://localhost:3000/likes/${count._id}`,
+        `https://artify-server-six.vercel.app/likes/${count._id}`,
         { userEmail: user.email }
       );
 
