@@ -30,7 +30,7 @@ const Banner = () => {
   // }, [user]);
 
   useEffect(() => {
-  axios.get("http://localhost:3000/latest-addArtwork")
+  axios.get("https://artify-server-six.vercel.app/latest-addArtwork")
     .then((res) => {
       setLoadData(res.data);
       setSwiperKey((prev) => prev + 1);

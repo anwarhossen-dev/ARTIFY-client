@@ -198,7 +198,7 @@ const ArtworkDetails = () => {
         favorite_by: user.email,
       };
 
-      await axios.post("http://localhost:3000/favoriteArt", payload);
+      await axios.post("https://artify-server-six.vercel.app/favoriteArt", payload);
 
       Swal.fire({
         position: "top",
