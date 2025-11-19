@@ -39,7 +39,7 @@ const MyFavorites = () => {
         setLoading(true); // Start loading
 
         axios
-            .get(`http://localhost:3000/my-favoriteArt?email=${user.email}`)
+            .get(`https://artify-server-six.vercel.app/my-favoriteArt?email=${user.email}`)
             .then(res => {
                 setGallery(res.data);
                 setLoading(false); // Stop loading
@@ -58,7 +58,7 @@ const MyFavorites = () => {
 
     const handleRemoveFromGallery = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/favoriteArt/${id}`);
+            await axios.delete(`https://artify-server-six.vercel.app/favoriteArt/${id}`);
 
             // UI থেকে remove করা
             setGallery(prev => prev.filter(item => item._id !== id));

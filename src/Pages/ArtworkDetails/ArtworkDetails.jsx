@@ -343,7 +343,7 @@ const ArtworkDetails = () => {
     }
 
     axios
-      .post(`http://localhost:3000/likes/${artwork._id}`, { userEmail: user.email })
+      .post(`https://artify-server-six.vercel.app/likes/${artwork._id}`, { userEmail: user.email })
       .then(res => {
         setArtwork(prev => ({ ...prev, likes: res.data.likes }));
       })
@@ -360,7 +360,7 @@ const ArtworkDetails = () => {
     }
 
     axios
-      .post("http://localhost:3000/favoriteArt", { ...artwork, favorite_by: user.email })
+      .post("https://artify-server-six.vercel.app/favoriteArt", { ...artwork, favorite_by: user.email })
       .then(() => {
         Swal.fire({
           position: "top",

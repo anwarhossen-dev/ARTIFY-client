@@ -14,7 +14,7 @@ const MyGalleryDetails = () => {
   useEffect(() => {
     if (!user) return;
 
-    axios.get(`http://localhost:3000/addArtwork/${id}`)
+    axios.get(`https://artify-server-six.vercel.app/addArtwork/${id}`)
       .then(res => {
         
         setGallery(res.data);

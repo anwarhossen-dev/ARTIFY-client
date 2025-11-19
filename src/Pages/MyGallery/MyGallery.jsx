@@ -203,7 +203,7 @@ const MyGallery = () => {
     if (!user?.email) return;
 
     axios
-      .get(`http://localhost:3000/my-gallery?email=${user.email}`)
+      .get(`https://artify-server-six.vercel.app/my-gallery?email=${user.email}`)
       .then(res => {
         setGallery(res.data);
         setLoading(false);

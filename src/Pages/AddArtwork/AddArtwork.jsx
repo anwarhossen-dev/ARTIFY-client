@@ -34,7 +34,7 @@ const AddArtwork = () => {
 
     try {
       //  Axios POST syntax
-      await axios.post('http://localhost:3000/addArtwork', artworkUser);
+      await axios.post('https://artify-server-six.vercel.app/addArtwork', artworkUser);
 
       toast.success('Successfully added artwork!');
       navigate('/');

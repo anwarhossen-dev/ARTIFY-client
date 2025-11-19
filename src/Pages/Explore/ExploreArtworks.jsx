@@ -37,7 +37,7 @@ const ExploreArtworks = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:3000/addArtwork')
+    axios.get('https://artify-server-six.vercel.app/addArtwork')
       .then(res => {
         const publicArtworks = res.data.filter(art => art.visibility === "Public");
         setArtworks(publicArtworks);
@@ -58,7 +58,7 @@ const ExploreArtworks = () => {
     e.preventDefault();
     const search = e.target.search.value;
 
-    axios.get(`http://localhost:3000/search?search=${search}`)
+    axios.get(`https://artify-server-six.vercel.app/search?search=${search}`)
       .then(res => {
         setArtworks(res.data);
       })
