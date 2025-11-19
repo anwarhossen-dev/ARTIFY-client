@@ -16,7 +16,7 @@ const MyFavoriteDetails = () => {
 
     useEffect(() => {
         const fetchFavorite = async () => {       const res = await axios
-            .get(`http://localhost:3000/favoriteArt/${id}`)
+            .get(`https://artify-server-six.vercel.app/favoriteArt/${id}`)
             setCount(res.data);
             console.log(res);
             setLoading(false);};
@@ -27,7 +27,7 @@ const MyFavoriteDetails = () => {
 
     const handleFavoriteButton = async () => {
         try {
-            await axios.delete(`http://localhost:3000/favoriteArt/${count._id}`);
+            await axios.delete(`https://artify-server-six.vercel.app/favoriteArt/${count._id}`);
             toast.success("Removed from favorites");
             navigate("/my-favorites");
         } catch (err) {
