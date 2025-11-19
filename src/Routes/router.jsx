@@ -69,7 +69,7 @@ const router = createBrowserRouter(
                 },
                 {
                     path: "/updated-artwork/:id",
-                    loader: ({ params }) => axios(`http://localhost:3000/addArtwork/${params.id}`),
+                    loader: ({ params }) => axios(`https://artify-server-six.vercel.app/addArtwork/${params.id}`),
                     element: <PrivateRoute><UpdatedArtwork></UpdatedArtwork></PrivateRoute>
                 },
                 {
