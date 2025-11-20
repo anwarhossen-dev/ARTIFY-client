@@ -38,7 +38,7 @@ const router = createBrowserRouter(
                     element: <Home />,
                     loader: async () => {
                         const res = await axios.get('https://artify-server-six.vercel.app/latest-addArtwork');
-                        return res.data;   
+                        return res.data;
                     }
                 },
                 {
@@ -67,11 +67,19 @@ const router = createBrowserRouter(
                     path: "/my-favortie-details/:id",
                     element: <PrivateRoute><MyFavoriteDetails></MyFavoriteDetails></PrivateRoute>
                 },
+                // {
+                //     path: "/updated-artwork/:id",
+                //     loader: ({ params }) => axios(`https://artify-server-six.vercel.app/addArtwork/${params.id}`),
+                //     element: <PrivateRoute><UpdatedArtwork></UpdatedArtwork></PrivateRoute>
+                // },
                 {
                     path: "/updated-artwork/:id",
-                    loader: ({ params }) => axios(`https://artify-server-six.vercel.app/addArtwork/${params.id}`),
-                    element: <PrivateRoute><UpdatedArtwork></UpdatedArtwork></PrivateRoute>
-                },
+                    loader: async ({ params }) => {
+                        const res = await axios.get(`https://artify-server-six.vercel.app/addArtwork/${params.id}`);
+                        return res.data;
+                    },
+                    element: <PrivateRoute><UpdatedArtwork /></PrivateRoute>
+                }, 
                 {
                     path: "/my-favorites",
                     element: <PrivateRoute><MyFavorites></MyFavorites></PrivateRoute>
@@ -80,8 +88,8 @@ const router = createBrowserRouter(
 
         },
         // ✅ ADD THESE TWO ROUTES HERE
-      { path: "/auth/login", element: <Login /> },
-      { path: "/auth/register", element: <Register /> },
+        { path: "/auth/login", element: <Login /> },
+        { path: "/auth/register", element: <Register /> },
 
         // {
         //     path: "/auth",

@@ -16,7 +16,7 @@ const MyGalleryDetails = () => {
 
     axios.get(`https://artify-server-six.vercel.app/addArtwork/${id}`)
       .then(res => {
-        
+
         setGallery(res.data);
       })
       .catch(err => {
@@ -172,9 +172,13 @@ const MyGalleryDetails = () => {
 
           <img
             className="w-36 h-36 rounded-full object-cover shadow-lg border"
-            src={gallery.artistPhoto || "https://via.placeholder.com/150"}
+            src={gallery.artistPhoto}
             alt="Artist"
+            onError={(e) => {
+              e.target.src = "https://placehold.co/150x150?text=No+Image";
+            }}
           />
+
 
           <div className="mt-5 w-full space-y-3 text-center">
 
