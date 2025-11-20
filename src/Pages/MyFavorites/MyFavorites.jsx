@@ -45,7 +45,7 @@ const MyFavorites = () => {
                 setLoading(false); // Stop loading
             })
             .catch(err => {
-                console.error(err);
+                console.error(err.massage);
                 setLoading(false);
             });
     }, [user]);

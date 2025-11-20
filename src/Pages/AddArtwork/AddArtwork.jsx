@@ -9,10 +9,11 @@ import LoadingSpinner from '../../Components/LoadingSpinner';
 const AddArtwork = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const { Loading, setloading } = useState(true);
+  const [ Loading, setloading ] = useState(false);
 
   const handleForm = async (e) => {
     e.preventDefault();
+    setloading(true);
 
     const artworkUser = {
       title: e.target.title.value,
@@ -41,6 +42,7 @@ const AddArtwork = () => {
       e.target.reset();
       setloading(false);
     } catch (error) {
+      setloading(false);
       console.error(error);
       toast.error('Failed to add artwork. Check console.');
     }
