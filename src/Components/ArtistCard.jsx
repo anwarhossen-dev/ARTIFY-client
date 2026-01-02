@@ -31,3 +31,4 @@ const ArtistCard = ({ art }) => {
 };
 
 export default ArtistCard;
+
