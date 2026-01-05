@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from 'react';
-import { AuthContext } from '../../Providers/AuthContext';
+//import { AuthContext } from '../../Providers/AuthContext';
 import FavoriteDetails from '../../Components/FavoriteDetails';
 import axios from 'axios';
 import LoadingSpinner from '../../Components/LoadingSpinner';
@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { Typewriter } from 'react-simple-typewriter';
 import { Fade } from 'react-awesome-reveal';
 import { FaUserAlt } from 'react-icons/fa';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const MyFavorites = () => {
     const { user } = use(AuthContext)

@@ -4,7 +4,8 @@ import {
   FaGlobe, FaEnvelope, FaDollarSign, FaBell, FaPalette, 
   FaShieldAlt, FaTrashAlt, FaDownload, FaSave, FaToggleOn, FaToggleOff 
 } from 'react-icons/fa';
-import { AuthContext } from '../../../Providers/AuthContext';
+import { AuthContext } from '../../../Providers/AuthProvider';
+//import { AuthContext } from '../../../Providers/AuthContext';
 
 const Settings = () => {
   const { user } = useContext(AuthContext);

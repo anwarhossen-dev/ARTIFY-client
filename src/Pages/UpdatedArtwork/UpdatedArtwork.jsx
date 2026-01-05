@@ -150,7 +150,8 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import { AuthContext } from "../../Providers/AuthContext";
+import { AuthContext } from "../../Providers/AuthProvider";
+//import { AuthContext } from "../../Providers/AuthContext";
 
 const UpdatedArtwork = () => {
   const data = useLoaderData();

@@ -473,8 +473,9 @@ import {
   FaBars,
   FaTimes,
 } from "react-icons/fa";
-import useAuth from "../hooks/useAuth";
 import useRole from "../hooks/useRole";
+import useAuth from "../hooks/useAuth";
+//import useAuth from "../hooks/useAuth";
 
 const DEFAULT_AVATAR = "/default-avatar.png";
 

@@ -2,7 +2,9 @@ import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 //import { AuthContext } from '../Provider/AuthContext';
 import { toast } from 'react-toastify';
-import { AuthContext } from '../../Providers/AuthContext';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { Container } from 'lucide-react';
+//import { AuthContext } from '../../Providers/AuthContext';
 
 const Login = () => {
   const {signInGoogle,setUser,signInUser} = use(AuthContext)
@@ -81,6 +83,7 @@ const Login = () => {
   Login with Google
 </Link>
       </div>
+      <Container></Container>
     </div>
     );
 };

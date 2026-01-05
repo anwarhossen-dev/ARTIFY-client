@@ -308,9 +308,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../Providers/AuthContext';
+//import { AuthContext } from '../../Providers/AuthContext';
 import axios from 'axios';
 import LoadingSpinner from '../../Components/LoadingSpinner';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const ArtworkDetails = () => {
   const { user } = useContext(AuthContext);

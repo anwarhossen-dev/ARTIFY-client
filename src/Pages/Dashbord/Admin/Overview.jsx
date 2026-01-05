@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { AuthContext } from "../../../Providers/AuthContext";
+//import { AuthContext } from "../../../Providers/AuthContext";
 import {
   FaDollarSign, FaImage, FaUsers, FaShoppingBag,
   FaArrowUp, FaArrowDown, FaEye, FaHeart, FaPlus
@@ -8,6 +8,7 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from "recharts";
 import axios from "axios";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Overview = () => {
   const { user } = useContext(AuthContext);

@@ -1,5 +1,6 @@
 // import { use } from "react";
-// import { AuthContext } from "../Providers/AuthContext";
+// import { AuthContext } from "../Providers/AuthProvider";
+// //import { AuthContext } from "../Providers/AuthContext";
 
 
 // const useAuth = () => {
@@ -8,11 +9,13 @@
 // };
 // export default useAuth;
 
-import { use } from "react"; // Only for React 19+
-import { AuthContext } from "../Providers/AuthContext";
+import { use, useContext } from "react"; // Only for React 19+
+import { AuthContext } from "../Providers/AuthProvider";
+
 
 const useAuth = () => {
-  const context = use(AuthContext);
+  const context = useContext(AuthContext);
+  console.log("useAuth context:", context);
   
   if (!context) {
     throw new Error("useAuth must be used within an AuthProvider");

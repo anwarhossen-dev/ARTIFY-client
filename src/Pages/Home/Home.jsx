@@ -219,7 +219,7 @@
 // export default Home;
 
 import React, { useEffect, useState, useContext } from 'react';
-import { AuthContext } from '../../Providers/AuthContext';
+//import { AuthContext } from '../../Providers/AuthContext';
 import Banner from '../../Components/Banner';
 import ArtWorkCard from '../../Components/ArtworkCard';
 import { useLoaderData } from 'react-router';
@@ -230,6 +230,7 @@ import axios from 'axios';
 import LoadingSpinner from '../../Components/LoadingSpinner';
 import ArtistCard from '../../Components/ArtistCard';
 import Highlights from '../../Components/Highlights';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Home = () => {
   const { loading } = useContext(AuthContext);

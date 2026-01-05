@@ -1,8 +1,9 @@
 import React, { use, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../Providers/AuthContext';
+//import { AuthContext } from '../Providers/AuthContext';
 import axios from 'axios';
+import { AuthContext } from '../Providers/AuthProvider';
 //import { AuthContext } from '../Provider/AuthContext';
 
 const MyGalleryDetails = () => {

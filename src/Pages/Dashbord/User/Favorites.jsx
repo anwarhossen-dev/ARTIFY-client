@@ -5,7 +5,8 @@ import Swal from "sweetalert2";
 //import { AuthContext } from "../../Providers/AuthContext";
 import { FaTrash } from "react-icons/fa";
 import LoadingSpinner from "../../../Components/LoadingSpinner";
-import { AuthContext } from "../../../Providers/AuthContext";
+import { AuthContext } from "../../../Providers/AuthProvider";
+//import { AuthContext } from "../../../Providers/AuthContext";
 
 const Favorites = () => {
   const { user } = useContext(AuthContext);

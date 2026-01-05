@@ -2,9 +2,10 @@
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
-import { AuthContext } from '../../Providers/AuthContext';
+//import { AuthContext } from '../../Providers/AuthContext';
 import axios from 'axios';
 import LoadingSpinner from '../../Components/LoadingSpinner';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const AddArtwork = () => {
   const navigate = useNavigate();

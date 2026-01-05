@@ -1,8 +1,8 @@
 // import React, { use, useEffect, useState } from 'react';
 // import MyLink from './MyLink';
 // import { Link } from 'react-router';
-// import { AuthContext } from '../Providers/AuthContext';
-// //import { AuthContext } from '../Provider/AuthContext';
+// import { AuthContext } from '../Providers/AuthProvider';
+
 
 // const Navbar = () => {
 //   const { user, logOut } = use(AuthContext)
@@ -189,7 +189,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import MyLink from './MyLink';
-import { AuthContext } from '../Providers/AuthContext';
+import { AuthContext } from '../Providers/AuthProvider';
+//mport { AuthContext } from '../Providers/AuthProvider';
+//import { AuthContext } from '../Providers/AuthContext';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext); // Fixed: useContext instead of use

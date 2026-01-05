@@ -9,9 +9,10 @@ import { Autoplay,  Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { AuthContext } from "../Providers/AuthContext";
+//import { AuthContext } from "../Providers/AuthContext";
 import { use, useEffect, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../Providers/AuthProvider";
 
 
 const Banner = () => {

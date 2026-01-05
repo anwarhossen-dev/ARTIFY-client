@@ -22,21 +22,28 @@
 
 // export default PrivateRoute;
 
-
-import { Navigate, useLocation } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import React, { useContext } from 'react'; // <-- useContext, not use
+//import { AuthContext } from './AuthContext';
+import { Navigate, useLocation } from 'react-router';
 import LoadingSpinner from '../Components/LoadingSpinner';
+import { AuthContext } from './AuthProvider';
 
-const PrivateRoute = ({ children, requireAdmin = false, requireArtist = false }) => {
-  const { user, loading, userRole } = useAuth();
+
+const PrivateRoute = ({ children }) => {
+  const { user, loading } = useContext(AuthContext); // <-- fixed here
   const location = useLocation();
 
-  if (loading) return <LoadingSpinner />;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center mt-50">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
-  if (!user) return <Navigate to="/auth/login" state={{ from: location }} replace />;
-
-  if (requireAdmin && userRole !== 'admin') return <Navigate to="/" replace />;
-  if (requireArtist && !['admin', 'artist'].includes(userRole)) return <Navigate to="/" replace />;
+  if (!user) {
+    return <Navigate to="/auth/login" state={{ from: location }} replace />;
+  }
 
   return children;
 };

@@ -1,8 +1,9 @@
 import React, { use, useEffect, useState } from 'react';
 import ArtWorkCard from '../../Components/ArtworkCard';
-import { AuthContext } from '../../Providers/AuthContext';
+//import { AuthContext } from '../../Providers/AuthContext';
 import axios from 'axios';
 import LoadingSpinner from '../../Components/LoadingSpinner';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const ExploreArtworks = () => {
   const [artworks, setArtworks] = useState([]);

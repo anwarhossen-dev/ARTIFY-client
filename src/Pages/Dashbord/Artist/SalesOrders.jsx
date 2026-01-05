@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { FaSearch, FaBoxOpen, FaDollarSign, FaShoppingCart, FaReceipt, FaEye, FaUndo, FaTruck } from "react-icons/fa";
 
@@ -28,10 +29,8 @@ const SalesOrders = () => {
   // Update order status (Refund/Shipped)
   const updateStatus = async (id, status) => {
     try {
-      await fetch(`http://localhost:3000/orders/${id}/status`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status }),
+      await axios.patch(`http://localhost:3000/orders/${id}/status`, {
+        status,
       });
       fetchOrders(); // Refresh orders
     } catch (err) {
