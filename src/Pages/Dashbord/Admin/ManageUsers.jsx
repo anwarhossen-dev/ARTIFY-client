@@ -154,7 +154,7 @@ const ManageUsers = () => {
   // Fetch users from backend
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL || "http://localhost:3000"}/users`)
+      .get(`${import.meta.env.VITE_API_URL || "https://n-alpha-rust.vercel.app"}/users`)
       .then((res) => {
         setUsers(res.data);
         setFilteredUsers(res.data);
@@ -179,7 +179,7 @@ const ManageUsers = () => {
   const handleDeleteUser = async (userId) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        await axios.delete(`${import.meta.env.VITE_API_URL || "http://localhost:3000"}/users/${userId}`);
+        await axios.delete(`${import.meta.env.VITE_API_URL || "https://n-alpha-rust.vercel.app"}/users/${userId}`);
         setUsers(users.filter((u) => u._id !== userId));
       } catch (err) {
         console.error(err);

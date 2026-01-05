@@ -16,7 +16,7 @@ const Artists = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
 
-  const API = "http://localhost:3000";
+  const API = "https://n-alpha-rust.vercel.app";
 
   /* ================= FETCH ARTISTS ================= */
   useEffect(() => {

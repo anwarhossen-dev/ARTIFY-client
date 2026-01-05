@@ -11,7 +11,7 @@ const SalesOrders = () => {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/orders");
+      const res = await fetch("https://n-alpha-rust.vercel.app/orders");
       const data = await res.json();
       setOrders(data);
     } catch (err) {
@@ -28,7 +28,7 @@ const SalesOrders = () => {
   // Update order status (Refund/Shipped)
   const updateStatus = async (id, status) => {
     try {
-      await fetch(`http://localhost:3000/orders/${id}/status`, {
+      await fetch(`https://n-alpha-rust.vercel.app/orders/${id}/status`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status }),

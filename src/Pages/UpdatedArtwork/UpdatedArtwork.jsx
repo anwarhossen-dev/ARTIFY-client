@@ -27,7 +27,7 @@
 //     const createdAt = new Date().toISOString();
 
 //     const artworkUser = { title, name, artistname, email, ImageURL, price, tools, visibility, category, dimensions, description, totalArtworks, artistPhoto, createdAt }
-//     axios(`http://localhost:3000/addArtwork/${data._id}`, {
+//     axios(`https://n-alpha-rust.vercel.app/addArtwork/${data._id}`, {
 //       method: 'PUT',
 //       headers: {
 //         'content-type': "application/json"

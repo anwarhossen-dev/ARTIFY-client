@@ -17,7 +17,7 @@ const MyFavorites = () => {
 
     //    useEffect(()=>{
 
-    //        axios(`http://localhost:3000/my-favoriteArt?email=${user.email}`)
+    //        axios(`https://n-alpha-rust.vercel.app/my-favoriteArt?email=${user.email}`)
     //        .then(res => res.json())
     //        .then(data => {
     //            setGallery(data)
@@ -27,7 +27,7 @@ const MyFavorites = () => {
     // useEffect(() => {
     //     if (!user?.email) return;
 
-    //     axios.get(`http://localhost:3000/my-favoriteArt?email=${user.email}`)
+    //     axios.get(`https://n-alpha-rust.vercel.app/my-favoriteArt?email=${user.email}`)
     //         .then(res => setGallery(res.data))
     //         .catch(err => console.error(err));
     //     setLoading(false);
