@@ -370,7 +370,7 @@ const ArtworkDetails = () => {
           showConfirmButton: false,
           timer: 1000,
         });
-        navigate('/explore-artworks');
+        //navigate('/explore-artworks');
       })
       .catch(err => console.error(err));
   };

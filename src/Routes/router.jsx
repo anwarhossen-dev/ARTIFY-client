@@ -122,77 +122,128 @@ import AddArtwork from "../Pages/AddArtwork/AddArtwork";
 import Home from "../Pages/Home/Home";
 import axios from "axios";
 import DashboardLayout from "../Layouts/DashbordLayout";
-import Overview from "../Pages/Dashbord/Overview";
+import AllArtworks from "../Pages/Dashbord/AllArtworks";
+import Overview from "../Pages/Dashbord/Admin/Overview";
+import Analytics from "../Pages/Dashbord/Admin/Analytics";
+import Profile from "../Pages/Dashbord/Profile";
+import Settings from "../Pages/Dashbord/Admin/Settings";
+import Artists from "../Pages/Dashbord/Artist/Artists";
+import SalesOrders from "../Pages/Dashbord/Artist/SalesOrders";
+import AddArtworks from "../Pages/Dashbord/Artist/AddArtworks";
+import MyOrders from "../Pages/Dashbord/User/MyOrders";
+import MyReviews from "../Pages/Dashbord/User/MyReviews";
+import Favorites from "../Pages/Dashbord/User/Favorites";
+import ManageUsers from "../Pages/Dashbord/Admin/ManageUsers";
+import ManageRequests from "../Pages/Dashbord/Admin/ManageRequests";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainLayout />,
-    errorElement: <NotFound />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-        loader: async () => {
-          const res = await axios.get('https://artify-server-six.vercel.app/latest-addArtwork');
-          return res.data;
-        }
-      },
-      {
-        path: "explore-artworks",
-        element: <ExploreArtworks />
-      },
-      {
-        path: "add-artwork",
-        element: <PrivateRoute><AddArtwork /></PrivateRoute>
-      },
-      {
-        path: "artwork-details/:id",
-        element: <PrivateRoute><ArtworkDetails /></PrivateRoute>
-      },
-      {
-        path: "my-gallery",
-        element: <PrivateRoute><MyGallery /></PrivateRoute>
-      },
-      {
-        path: "my-gallery-details/:id",
-        element: <MyGalleryDetails />
-      },
-      {
-        path: "my-favortie-details/:id", // Note: typo in "favortie" → fix to "favorite" later?
-        element: <PrivateRoute><MyFavoriteDetails /></PrivateRoute>
-      },
-      {
-        path: "updated-artwork/:id",
-        loader: async ({ params }) => {
-          const res = await axios.get(`https://artify-server-six.vercel.app/addArtwork/${params.id}`);
-          return res.data;
-        },
-        element: <PrivateRoute><UpdatedArtwork /></PrivateRoute>
-      },
-      {
-        path: "my-favorites",
-        element: <PrivateRoute><MyFavorites /></PrivateRoute>
-      }
-    ]
-  },
-  { path: "/auth/login", element: <Login /> },
-  { path: "/auth/register", element: <Register /> },
-  
-  
-  /* DASHBOARD */
-  {
+    {
+        path: "/",
+        element: <MainLayout />,
+        errorElement: <NotFound />,
+        children: [
+            {
+                index: true,
+                element: <Home />,
+                loader: async () => {
+                    const res = await axios.get('https://artify-server-six.vercel.app/latest-addArtwork');
+                    return res.data;
+                }
+            },
+            {
+                path: "explore-artworks",
+                element: <ExploreArtworks />
+            },
+            {
+                path: "add-artwork",
+                element: <PrivateRoute><AddArtwork /></PrivateRoute>
+            },
+            {
+                path: "artwork-details/:id",
+                element: <ArtworkDetails />
+            },
+            {
+                path: "my-gallery",
+                element: <PrivateRoute><MyGallery /></PrivateRoute>
+            },
+            {
+                path: "my-gallery-details/:id",
+                element: <MyGalleryDetails />
+            },
+            {
+                path: "my-favortie-details/:id", // Note: typo in "favortie" → fix to "favorite" later?
+                element: <PrivateRoute><MyFavoriteDetails /></PrivateRoute>
+            },
+            {
+                path: "updated-artwork/:id",
+                loader: async ({ params }) => {
+                    const res = await axios.get(`https://artify-server-six.vercel.app/addArtwork/${params.id}`);
+                    return res.data;
+                },
+                element: <PrivateRoute><UpdatedArtwork /></PrivateRoute>
+            },
+            {
+                path: "my-favorites",
+                element: <PrivateRoute><MyFavorites /></PrivateRoute>
+            }
+        ]
+    },
+    { path: "/auth/login", element: <Login /> },
+    { path: "/auth/register", element: <Register /> },
+
+
+    // /* DASHBOARD */
+    // {
+    //     path: "/dashboard",
+    //     element: (
+    //         <PrivateRoute>
+    //             <DashboardLayout />
+    //         </PrivateRoute>
+    //     ),
+    //     children: [
+    //         { index: true, element: <Overview /> },
+    //         {
+    //             path: "/dashboard/artworks",
+    //             element: <AllArtworks />
+    //         },
+            
+    //         { path: '/dashboard/artists', element: <Artists /> },
+    //         { path: '/dashboard/sales', element: <SalesOrders /> },
+    //         { path: '/dashboard-admin/analytics', element: <Analytics /> },
+    //         { path: '/dashboard/manage-users', element: <ManageUsers /> },
+    //         { path: '/dashboard/manage-requests', element: <ManageRequests /> },
+    //         { path: '/dashboard/my-profile', element: <Profile /> },
+    //         { path: '/dashboard/settings', element: <Settings /> },
+    //         //artist
+    //         { path: '/dashboard/artists', element: <Artists /> },
+    //         { path: "/dashboard/add-artwork", element: <AddArtworks />},
+    //         { path: '/dashboard/sales', element: <SalesOrders /> },
+    //         // user
+    //         { path: '/dashboard/my-orders', element: <MyOrders /> },
+    //         { path: '/dashboard/my-reviews', element: <MyReviews/> },
+    //         { path: '/dashboard/favorites', element: <Favorites /> },
+    //     ],
+    // },
+
+    {
     path: "/dashboard",
-    element: (
-      <PrivateRoute>
-        <DashboardLayout />
-      </PrivateRoute>
-    ),
+    element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
     children: [
       { index: true, element: <Overview /> },
-    //   { path: "artworks", element: <DashboardArtworks /> },
-    //   { path: "profile", element: <DashboardProfile /> },
-    ],
-  },
+      { path: "my-Profile", element: <Profile /> },
+      { path: "my-Orders", element: <MyOrders /> },
+      { path: "my-Reviews", element: <MyReviews /> },
+      { path: "favorites", element: <Favorites /> },
+      { path: "add-artwork", element: <AddArtworks /> },
+      { path: "Artists", element: <Artists /> },
+      { path: "sales", element: <SalesOrders /> },
+      { path: "Overview", element: <Overview /> },
+      { path: "manage-users", element: <ManageUsers /> },
+      { path: "manage-requests", element: <ManageRequests /> },
+      { path: "analytics", element: <Analytics /> },
+      { path: "all-artworks", element: <AllArtworks /> },
+      { path: "settings", element: <Settings /> },
+    ]
+  }
 ]);
 export default router;
