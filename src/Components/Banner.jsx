@@ -22,7 +22,7 @@ const Banner = () => {
 
   // useEffect(() => {
     
-  //   axios("http://localhost:3000/latest-addArtwork")
+  //   axios("https://artify-server-six.vercel.app/latest-addArtwork")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setLoadData(data);

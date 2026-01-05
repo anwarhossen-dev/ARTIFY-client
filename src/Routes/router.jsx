@@ -31,7 +31,7 @@
 //                 // {
 //                 //     index: '/',
 //                 //     element:<Home></Home>,
-//                 //     //loader: ()=> axios('http://localhost:3000/latest-addArtwork')
+//                 //     //loader: ()=> axios('https://artify-server-six.vercel.app/latest-addArtwork')
 
 
 //                 // },

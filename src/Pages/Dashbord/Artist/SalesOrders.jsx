@@ -12,8 +12,8 @@ const SalesOrders = () => {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/orders");
-      const data = await res.json();
+      const res = await axios("https://artify-server-six.vercel.app/orders");
+      const data = await res.data;
       setOrders(data);
     } catch (err) {
       console.error(err);
@@ -29,7 +29,7 @@ const SalesOrders = () => {
   // Update order status (Refund/Shipped)
   const updateStatus = async (id, status) => {
     try {
-      await axios.patch(`http://localhost:3000/orders/${id}/status`, {
+      await axios.patch(`https://artify-server-six.vercel.app/orders/${id}/status`, {
         status,
       });
       fetchOrders(); // Refresh orders

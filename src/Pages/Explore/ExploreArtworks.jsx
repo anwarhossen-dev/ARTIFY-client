@@ -10,7 +10,7 @@ const ExploreArtworks = () => {
   const { loading } = use(AuthContext)
 
   //   useEffect(() => {
-  //     axios('http://localhost:3000/addArtwork')
+  //     axios('https://artify-server-six.vercel.app/addArtwork')
   //       .then(res => res.json())
   //       .then(data => {
   //         const publicArtworks = data.filter(art => art.visibility === "Public");
@@ -27,7 +27,7 @@ const ExploreArtworks = () => {
   //   const handleSearch =(e)=>{
   //     e.preventDefault()
   //     const search = e.target.search.value
-  //    axios(`http://localhost:3000/search?search=${search}`)
+  //    axios(`https://artify-server-six.vercel.app/search?search=${search}`)
   //     .then(res => res.json())
   //     .then(data =>{
   //       setArtworks(data)

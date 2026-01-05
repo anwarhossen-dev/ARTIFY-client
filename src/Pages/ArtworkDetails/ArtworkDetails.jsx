@@ -14,7 +14,7 @@
 
 // //     useEffect(()=>{
         
-// //         fetch(`http://localhost:3000/addArtwork/${id}`)
+// //         fetch(`https://artify-server-six.vercel.app/addArtwork/${id}`)
 // //         .then(res => res.json())
 // //         .then(data =>{
 // //             setCount(data)
@@ -23,7 +23,7 @@
 
 // //     const handleLikeButton =()=>{
         
-// //         fetch(`http://localhost:3000/likes/${count._id}`,{
+// //         fetch(`https://artify-server-six.vercel.app/likes/${count._id}`,{
 // //             method: "POST",
 // //             headers: {
 // //                 'content-type': 'application/json'
@@ -42,7 +42,7 @@
 
 // //     const handleFavoriteButton = () =>{
 
-// //         axios(`http://localhost:3000/favoriteArt`,{
+// //         axios(`https://artify-server-six.vercel.app/favoriteArt`,{
 // //             method: "POST",
 // //             headers: {
 // //                 'content-type': 'application/json',
@@ -134,7 +134,7 @@
 //     // =============================
 //     useEffect(() => {
 //         axios
-//             .get(`http://localhost:3000/addArtwork/${id}`)
+//             .get(`https://artify-server-six.vercel.app/addArtwork/${id}`)
 //             .then(res => {
 //                 setCount(res.data);
 //                 setLoading(false);
@@ -152,7 +152,7 @@
 //         }
 
 //         axios
-//             .post(`http://localhost:3000/likes/${count._id}`, {
+//             .post(`https://artify-server-six.vercel.app/likes/${count._id}`, {
 //                 userEmail: user.email,
 //             })
 //             .then(res => {
@@ -174,7 +174,7 @@
 //         }
 
 //         axios
-//             .post("http://localhost:3000/favoriteArt", {
+//             .post("https://artify-server-six.vercel.app/favoriteArt", {
 //                 ...count,
 //                 favorite_by: user.email,
 //             })

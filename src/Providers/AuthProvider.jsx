@@ -216,7 +216,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         try {
           // Sync user to backend (create or update)
-          await axios.post("http://localhost:3000/users", {
+          await axios.post("https://artify-server-six.vercel.app/users", {
             uid: currentUser.uid,
             email: currentUser.email,
             displayName: currentUser.displayName,
@@ -224,7 +224,7 @@ const AuthProvider = ({ children }) => {
           });
 
           // Fetch user role from backend
-          const res = await axios.get(`http://localhost:3000/users/${currentUser.email}`);
+          const res = await axios.get(`https://artify-server-six.vercel.app/users/${currentUser.email}`);
           setUserRole(res.data.role || "user");
         } catch (err) {
           console.error("Auth Sync Error:", err);
@@ -260,79 +260,3 @@ const AuthProvider = ({ children }) => {
 export default AuthProvider;
 
 
-
-// const AuthProvider = ({ children }) => {
-//     const [user, setUser] = useState(null);
-//     const [userRole, setUserRole] = useState(null); // 'admin', 'artist', or 'user'
-//     const [loading, setLoading] = useState(true);
-
-//     const createUser = (email, password) => {
-//         setLoading(true);
-//         return createUserWithEmailAndPassword(auth, email, password);
-//     }
-//     const signInUser = (email, password) => {
-//         setLoading(true);
-//         return signInWithEmailAndPassword(auth, email, password);
-//     }
-//     const signInGoogle = () => {
-//         setLoading(true);
-//         return signInWithPopup(auth, googleProvider);
-//     }
-//     const updateUser = (userProfile) => {
-//         return updateProfile(auth.currentUser, userProfile);
-//     }
-//     const logOut = () => {
-//         setUserRole(null);
-//         return signOut(auth);
-//     }
-
-//     useEffect(() => {
-//         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-//             setUser(currentUser);
-            
-//             if (currentUser) {
-//                 try {
-//                     // 1. Sync user to DB
-//                     await axios.post('http://localhost:3000/users', {
-//                         uid: currentUser.uid,
-//                         email: currentUser.email,
-//                         displayName: currentUser.displayName,
-//                         photoURL: currentUser.photoURL
-//                     });
-
-//                     // 2. Get Role from DB
-//                     const res = await axios.get(`http://localhost:3000/users/${currentUser.email}`);
-//                     setUserRole(res.data.role || 'user');
-//                 } catch (err) {
-//                     console.error("Auth Sync Error:", err);
-//                     setUserRole('user');
-//                 }
-//             } else {
-//                 setUserRole(null);
-//             }
-//             setLoading(false);
-//         });
-//         return () => unsubscribe();
-//     }, []);
-
-//     const authInfo = {
-//         signInGoogle,
-//         user,
-//         userRole, // Now available in your app
-//         setUser,
-//         createUser,
-//         updateUser,
-//         logOut,
-//         signInUser,
-//         loading,
-//         setLoading
-//     }
-
-//     return (
-//         <AuthContext.Provider value={authInfo}>
-//             {children}
-//         </AuthContext.Provider>
-//     );
-// };
-
-// export default AuthProvider;

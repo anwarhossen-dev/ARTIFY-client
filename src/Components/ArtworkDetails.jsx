@@ -13,7 +13,7 @@
 
 //     useEffect(()=>{
         
-//         axios(`http://localhost:3000/addArtwork/${id}`)
+//         axios(`https://artify-server-six.vercel.app/addArtwork/${id}`)
 //         .then(res => res.json())
 //         .then(data =>{
 //             setCount(data)
@@ -22,7 +22,7 @@
 
 //     const handleLikeButton =()=>{
         
-//         axios(`http://localhost:3000/likes/${count._id}`,{
+//         axios(`https://artify-server-six.vercel.app/likes/${count._id}`,{
 //             method: "POST",
 //             headers: {
 //                 'content-type': 'application/json'
@@ -41,7 +41,7 @@
 
 //     // const handleFavoriteButton = () =>{
 
-//     //     axios(`http://localhost:3000/favoriteArt`,{
+//     //     axios(`https://artify-server-six.vercel.app/favoriteArt`,{
 //     //         method: "POST",
 //     //         headers: {
 //     //             'content-type': 'application/json',
@@ -58,7 +58,7 @@
 //     };
 
 //     const res = await axios.post(
-//       "http://localhost:3000/favoriteArt",
+//       "https://artify-server-six.vercel.app/favoriteArt",
 //       payload
 //     );
 

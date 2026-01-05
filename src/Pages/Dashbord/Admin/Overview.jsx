@@ -21,7 +21,7 @@ const Overview = () => {
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
-  axios(`${import.meta.env.VITE_API_URL || "http://localhost:3000"}/admin/dashboard`)
+  axios(`${import.meta.env.VITE_API_URL || "https://artify-server-six.vercel.app"}/admin/dashboard`)
     .then((res) => {
       const data = res.data; // ✅ fix here
       setDashboard(data);

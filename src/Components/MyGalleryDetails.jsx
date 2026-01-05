@@ -38,7 +38,7 @@ const MyGalleryDetails = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        // axios(`http://localhost:3000/addArtwork/${gallery._id}`)
+        // axios(`https://artify-server-six.vercel.app/addArtwork/${gallery._id}`)
         //   .then(res => res.json())
         //   .then(() => {
         //     navigate('/my-gallery')
