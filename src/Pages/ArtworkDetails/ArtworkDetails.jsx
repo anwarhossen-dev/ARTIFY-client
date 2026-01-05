@@ -14,7 +14,7 @@
 
 // //     useEffect(()=>{
         
-// //         fetch(`https://n-alpha-rust.vercel.app/addArtwork/${id}`)
+// //         fetch(`http://localhost:3000/addArtwork/${id}`)
 // //         .then(res => res.json())
 // //         .then(data =>{
 // //             setCount(data)
@@ -23,7 +23,7 @@
 
 // //     const handleLikeButton =()=>{
         
-// //         fetch(`https://n-alpha-rust.vercel.app/likes/${count._id}`,{
+// //         fetch(`http://localhost:3000/likes/${count._id}`,{
 // //             method: "POST",
 // //             headers: {
 // //                 'content-type': 'application/json'
@@ -42,7 +42,7 @@
 
 // //     const handleFavoriteButton = () =>{
 
-// //         axios(`https://n-alpha-rust.vercel.app/favoriteArt`,{
+// //         axios(`http://localhost:3000/favoriteArt`,{
 // //             method: "POST",
 // //             headers: {
 // //                 'content-type': 'application/json',
@@ -134,7 +134,7 @@
 //     // =============================
 //     useEffect(() => {
 //         axios
-//             .get(`https://n-alpha-rust.vercel.app/addArtwork/${id}`)
+//             .get(`http://localhost:3000/addArtwork/${id}`)
 //             .then(res => {
 //                 setCount(res.data);
 //                 setLoading(false);
@@ -152,7 +152,7 @@
 //         }
 
 //         axios
-//             .post(`https://n-alpha-rust.vercel.app/likes/${count._id}`, {
+//             .post(`http://localhost:3000/likes/${count._id}`, {
 //                 userEmail: user.email,
 //             })
 //             .then(res => {
@@ -174,7 +174,7 @@
 //         }
 
 //         axios
-//             .post("https://n-alpha-rust.vercel.app/favoriteArt", {
+//             .post("http://localhost:3000/favoriteArt", {
 //                 ...count,
 //                 favorite_by: user.email,
 //             })

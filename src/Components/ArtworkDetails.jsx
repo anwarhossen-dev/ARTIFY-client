@@ -13,7 +13,7 @@
 
 //     useEffect(()=>{
         
-//         axios(`https://n-alpha-rust.vercel.app/addArtwork/${id}`)
+//         axios(`http://localhost:3000/addArtwork/${id}`)
 //         .then(res => res.json())
 //         .then(data =>{
 //             setCount(data)
@@ -22,7 +22,7 @@
 
 //     const handleLikeButton =()=>{
         
-//         axios(`https://n-alpha-rust.vercel.app/likes/${count._id}`,{
+//         axios(`http://localhost:3000/likes/${count._id}`,{
 //             method: "POST",
 //             headers: {
 //                 'content-type': 'application/json'
@@ -41,7 +41,7 @@
 
 //     // const handleFavoriteButton = () =>{
 
-//     //     axios(`https://n-alpha-rust.vercel.app/favoriteArt`,{
+//     //     axios(`http://localhost:3000/favoriteArt`,{
 //     //         method: "POST",
 //     //         headers: {
 //     //             'content-type': 'application/json',
@@ -58,7 +58,7 @@
 //     };
 
 //     const res = await axios.post(
-//       "https://n-alpha-rust.vercel.app/favoriteArt",
+//       "http://localhost:3000/favoriteArt",
 //       payload
 //     );
 

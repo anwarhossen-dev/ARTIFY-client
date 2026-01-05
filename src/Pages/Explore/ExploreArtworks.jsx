@@ -9,7 +9,7 @@ const ExploreArtworks = () => {
   const { loading } = use(AuthContext)
 
   //   useEffect(() => {
-  //     axios('https://n-alpha-rust.vercel.app/addArtwork')
+  //     axios('http://localhost:3000/addArtwork')
   //       .then(res => res.json())
   //       .then(data => {
   //         const publicArtworks = data.filter(art => art.visibility === "Public");
@@ -26,7 +26,7 @@ const ExploreArtworks = () => {
   //   const handleSearch =(e)=>{
   //     e.preventDefault()
   //     const search = e.target.search.value
-  //    axios(`https://n-alpha-rust.vercel.app/search?search=${search}`)
+  //    axios(`http://localhost:3000/search?search=${search}`)
   //     .then(res => res.json())
   //     .then(data =>{
   //       setArtworks(data)

@@ -31,7 +31,7 @@
 //                 // {
 //                 //     index: '/',
 //                 //     element:<Home></Home>,
-//                 //     //loader: ()=> axios('https://n-alpha-rust.vercel.app/latest-addArtwork')
+//                 //     //loader: ()=> axios('http://localhost:3000/latest-addArtwork')
 
 
 //                 // },

@@ -270,7 +270,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_BASE_URL = "https://n-alpha-rust.vercel.app";
+const API_BASE_URL = "http://localhost:3000";
 
 const ManageRequests = () => {
   const [requests, setRequests] = useState([]);

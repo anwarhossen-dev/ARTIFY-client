@@ -20,7 +20,7 @@ const Overview = () => {
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
-  axios(`${import.meta.env.VITE_API_URL || "https://n-alpha-rust.vercel.app"}/admin/dashboard`)
+  axios(`${import.meta.env.VITE_API_URL || "http://localhost:3000"}/admin/dashboard`)
     .then((res) => {
       const data = res.data; // ✅ fix here
       setDashboard(data);

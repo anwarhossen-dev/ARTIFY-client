@@ -21,7 +21,7 @@ const Banner = () => {
 
   // useEffect(() => {
     
-  //   axios("https://n-alpha-rust.vercel.app/latest-addArtwork")
+  //   axios("http://localhost:3000/latest-addArtwork")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setLoadData(data);

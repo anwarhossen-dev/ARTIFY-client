@@ -97,7 +97,7 @@ export default AuthProvider;
 //             if (currentUser) {
 //                 try {
 //                     // 1. Sync user to DB
-//                     await axios.post('https://n-alpha-rust.vercel.app/users', {
+//                     await axios.post('http://localhost:3000/users', {
 //                         uid: currentUser.uid,
 //                         email: currentUser.email,
 //                         displayName: currentUser.displayName,
@@ -105,7 +105,7 @@ export default AuthProvider;
 //                     });
 
 //                     // 2. Get Role from DB
-//                     const res = await axios.get(`https://n-alpha-rust.vercel.app/users/${currentUser.email}`);
+//                     const res = await axios.get(`http://localhost:3000/users/${currentUser.email}`);
 //                     setUserRole(res.data.role || 'user');
 //                 } catch (err) {
 //                     console.error("Auth Sync Error:", err);
